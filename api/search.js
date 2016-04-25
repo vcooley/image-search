@@ -30,7 +30,7 @@ imageSearchThunk = function(options) {
   })
 };
 
-module.exports = function *() {
+module.exports = function *(next) {
   var query = this.query;
   var options = {
     query: query.query,
@@ -39,10 +39,11 @@ module.exports = function *() {
   };
   if (!options.query) {
     this.status = 400;
-    this.body = 'You must enter a query parameter.'
+    this.body = 'You must enter a query parameter.';
     return;
   }
   else {
     this.body = yield imageSearchThunk(options);
   }
+  yield next;
 }
