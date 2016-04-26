@@ -1,5 +1,5 @@
 var config = require('../config')
-var Bing = require('node-bing-api')({ accKey: config.bingApiKey });
+var Bing = require('node-bing-api')({ accKey: config.BING_API_KEY });
 
 imageSearchThunk = function(options) {
   return new Promise(function (resolve, reject) {
